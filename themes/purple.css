@@ -1,0 +1,49 @@
+/* ============================================
+   PURPLE THEME
+   Rich, creative, elegant violet tones
+   ============================================ */
+
+:root {
+    /* Background Colors */
+    --bg-primary: #1e1b2e;
+    --bg-secondary: #2a2640;
+    --bg-card: #332e4a;
+
+    /* Text Colors */
+    --text-primary: #f3e8ff;
+    --text-secondary: #c4b5d8;
+    --text-muted: #9585a8;
+
+    /* Accent Colors */
+    --accent-primary: #a855f7;
+    --accent-hover: #9333ea;
+    --accent-shadow: rgba(168, 85, 247, 0.3);
+
+    /* Border Colors */
+    --border-color: #4c3d6e;
+
+    /* Navigation */
+    --nav-bg: rgba(30, 27, 46, 0.9);
+
+    /* Hero */
+    --hero-gradient: radial-gradient(ellipse at top, #581c87 0%, transparent 50%);
+    --grid-color: rgba(168, 85, 247, 0.05);
+    --badge-bg: rgba(168, 85, 247, 0.2);
+
+    /* Text Gradient */
+    --text-gradient: linear-gradient(135deg, #a855f7 0%, #ec4899 100%);
+
+    /* Tags & Icons */
+    --tag-bg: rgba(168, 85, 247, 0.15);
+    --icon-bg: rgba(168, 85, 247, 0.2);
+
+    /* Code Block */
+    --code-bg: #1e1b2e;
+    --code-header-bg: #2a2640;
+    --code-text: #c4b5d8;
+    --code-keyword: #f472b6;
+    --code-class: #c084fc;
+    --code-string: #e879f9;
+    --code-number: #fbbf24;
+    --code-method: #a78bfa;
+}

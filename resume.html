@@ -1,0 +1,460 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+    <link rel="stylesheet" href="themes/default.css">
+    <link id="theme-style" rel="stylesheet" href="themes/default.css">
+    <title>Akshya Pandey - Senior Software Engineer Resume</title>
+    <style>
+        /* ATS-Friendly Simple Styling */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', 'Helvetica', sans-serif;
+            font-size: 11pt;
+            line-height: 1.5;
+            color: #333;
+            max-width: 8.5in;
+            margin: 0 auto;
+            padding: 0.5in;
+            background: white;
+        }
+
+        /* Download Button - Theme Aware */
+        .download-bar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: var(--bg-secondary, #1a1a2e);
+            border-bottom: 1px solid var(--border-color, #333);
+            padding: 12px 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 20px;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+        }
+
+        .download-bar p {
+            color: var(--text-secondary, #ccc);
+            font-size: 14px;
+            margin: 0;
+        }
+
+        .download-btn {
+            background: var(--accent-primary, #667eea);
+            color: white;
+            border: none;
+            padding: 10px 24px;
+            font-size: 14px;
+            font-weight: 600;
+            border-radius: 6px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            transition: transform 0.2s, box-shadow 0.2s, background 0.2s;
+        }
+
+        .download-btn:hover {
+            transform: translateY(-2px);
+            background: var(--accent-hover, #5a6fd6);
+            box-shadow: 0 4px 12px var(--accent-shadow, rgba(102, 126, 234, 0.4));
+        }
+
+        .download-btn svg {
+            width: 18px;
+            height: 18px;
+        }
+
+        .back-btn {
+            position: absolute;
+            left: 20px;
+            background: var(--bg-card, #2a2a3e);
+            color: var(--text-primary, #fff);
+            border: 1px solid var(--border-color, #444);
+            padding: 8px 16px;
+            font-size: 14px;
+            border-radius: 6px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            transition: background 0.2s, border-color 0.2s;
+            text-decoration: none;
+        }
+
+        .back-btn:hover {
+            background: var(--accent-primary, #667eea);
+            border-color: var(--accent-primary, #667eea);
+        }
+
+        .back-btn svg {
+            width: 16px;
+            height: 16px;
+        }
+
+        .resume-container {
+            margin-top: 70px;
+        }
+
+        /* Header */
+        .header {
+            text-align: center;
+            margin-bottom: 20px;
+            border-bottom: 2px solid #333;
+            padding-bottom: 15px;
+        }
+
+        .name {
+            font-size: 24pt;
+            font-weight: bold;
+            color: #1a1a1a;
+            margin-bottom: 5px;
+        }
+
+        .title {
+            font-size: 14pt;
+            color: #444;
+            margin-bottom: 10px;
+        }
+
+        .contact-info {
+            font-size: 10pt;
+            color: #555;
+        }
+
+        .contact-info span {
+            margin: 0 10px;
+        }
+
+        /* Sections */
+        .section {
+            margin-bottom: 18px;
+        }
+
+        .section-title {
+            font-size: 13pt;
+            font-weight: bold;
+            color: #1a1a1a;
+            border-bottom: 1px solid #999;
+            padding-bottom: 3px;
+            margin-bottom: 10px;
+            text-transform: uppercase;
+        }
+
+        /* Summary */
+        .summary {
+            text-align: justify;
+        }
+
+        /* Skills */
+        .skills-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 5px 20px;
+        }
+
+        .skill-category {
+            margin-bottom: 8px;
+            width: 100%;
+        }
+
+        .skill-category strong {
+            color: #1a1a1a;
+        }
+
+        /* Experience */
+        .job {
+            margin-bottom: 15px;
+        }
+
+        .job-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            flex-wrap: wrap;
+        }
+
+        .job-title {
+            font-weight: bold;
+            font-size: 11pt;
+            color: #1a1a1a;
+        }
+
+        .company {
+            font-weight: bold;
+            color: #333;
+        }
+
+        .job-meta {
+            font-size: 10pt;
+            color: #555;
+            font-style: italic;
+        }
+
+        .job-location {
+            font-size: 10pt;
+            color: #666;
+        }
+
+        /* Bullet Points */
+        ul {
+            margin-left: 20px;
+            margin-top: 5px;
+        }
+
+        li {
+            margin-bottom: 3px;
+        }
+
+        /* Education */
+        .education-item {
+            margin-bottom: 10px;
+        }
+
+        .degree {
+            font-weight: bold;
+        }
+
+        .school {
+            color: #333;
+        }
+
+        .edu-date {
+            font-size: 10pt;
+            color: #666;
+        }
+
+        /* Print Styles */
+        @media print {
+            @page {
+                size: Letter;
+                margin: 0.4in;
+            }
+
+            html, body {
+                margin: 0;
+                padding: 0;
+                background: white;
+            }
+
+            .download-bar {
+                display: none !important;
+            }
+
+            .resume-container {
+                margin: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Download Bar -->
+    <div class="download-bar">
+        <a href="index.html" class="back-btn">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M19 12H5M12 19l-7-7 7-7"/>
+            </svg>
+            Back
+        </a>
+        <p>Ready to download? Save as PDF for best results.</p>
+        <button class="download-btn" onclick="window.print()">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+                <polyline points="7 10 12 15 17 10"/>
+                <line x1="12" y1="15" x2="12" y2="3"/>
+            </svg>
+            Download PDF
+        </button>
+    </div>
+
+    <div class="resume-container">
+    <!-- Header -->
+    <header class="header">
+        <h1 class="name">AKSHYA PANDEY</h1>
+        <div class="title">Senior Software Engineer | Java | Spring Boot | Microservices | AI/ML Integration</div>
+        <div class="contact-info">
+            <span>+91 7814001316</span> |
+            <span>akshyapandey20@gmail.com</span> |
+            <span>linkedin.com/in/akshya-pandey-b8b5a115b</span> |
+            <span>Gurugram, India</span>
+        </div>
+    </header>
+
+    <!-- Professional Summary -->
+    <section class="section">
+        <h2 class="section-title">Professional Summary</h2>
+        <p class="summary">
+            Senior Software Engineer with 4+ years of experience in building scalable, high-performance backend systems and enterprise applications. Expert in Java, Spring Boot, and microservices architecture with proven track record of leading cross-functional teams and delivering mission-critical products. Specialized in real-time data processing using Apache Kafka and Spark, with emerging expertise in AI/ML integration including Model Context Protocol (MCP), multi-agent systems, and LLM-powered applications. Strong problem-solver with excellent communication skills and passion for driving technical innovation.
+        </p>
+    </section>
+
+    <!-- Technical Skills -->
+    <section class="section">
+        <h2 class="section-title">Technical Skills</h2>
+        <div class="skill-category">
+            <strong>Programming Languages:</strong> Java, Python, JavaScript, SQL
+        </div>
+        <div class="skill-category">
+            <strong>Frameworks & Libraries:</strong> Spring Boot, Spring Security, Spring MVC, J2EE, Hibernate, JPA, REST APIs, Microservices
+        </div>
+        <div class="skill-category">
+            <strong>Databases:</strong> MySQL, MongoDB, Redis, Elasticsearch, InfluxDB, PostgreSQL
+        </div>
+        <div class="skill-category">
+            <strong>Data & Streaming:</strong> Apache Kafka, Apache Spark, EMQX, Real-time Data Processing, Big Data Analytics
+        </div>
+        <div class="skill-category">
+            <strong>Cloud & DevOps:</strong> AWS (S3, EC2, Lambda), Kubernetes, Docker, Git, CI/CD, Jenkins, MinIO
+        </div>
+        <div class="skill-category">
+            <strong>AI/ML & Agents:</strong> Model Context Protocol (MCP), Multi-Agent Systems, LLM Integration, Claude API, AI Agent Orchestration, Prompt Engineering, RAG Systems
+        </div>
+        <div class="skill-category">
+            <strong>Tools & Platforms:</strong> IntelliJ IDEA, VS Code, Postman, Swagger, Jira, Confluence, GitHub, Linux
+        </div>
+        <div class="skill-category">
+            <strong>Methodologies:</strong> Agile, Scrum, TDD, SOLID Principles, Design Patterns, System Design
+        </div>
+    </section>
+
+    <!-- Professional Experience -->
+    <section class="section">
+        <h2 class="section-title">Professional Experience</h2>
+
+        <!-- Senior Software Engineer -->
+        <div class="job">
+            <div class="job-header">
+                <span class="job-title">Senior Software Engineer</span>
+                <span class="job-meta">October 2022 - Present</span>
+            </div>
+            <div class="company">IoT83</div>
+            <div class="job-location">Gurugram, Haryana, India</div>
+            <ul>
+                <li>Led development of in-house product application serving thousands of users, making critical architectural decisions for scalability and performance</li>
+                <li>Architected and implemented multi-agent AI systems using Model Context Protocol (MCP) for automated workflow orchestration</li>
+                <li>Designed and deployed MCP servers enabling seamless integration between LLMs and enterprise backend systems</li>
+                <li>Built distributed data pipelines using Apache Kafka and Spark processing 100K+ events per second</li>
+                <li>Implemented Big Data solutions optimizing large-scale data processing and analytics workflows</li>
+                <li>Mentored team of 5+ junior developers, conducting code reviews and establishing best practices</li>
+                <li>Designed secured RESTful APIs using Spring Security with OAuth2 and JWT authentication</li>
+                <li>Developed multi-threaded custom simulation systems using J2EE and Spring Boot</li>
+                <li>Integrated AWS services (S3, EC2, Lambda) for cloud-native application deployment</li>
+            </ul>
+        </div>
+
+        <!-- Software Engineer -->
+        <div class="job">
+            <div class="job-header">
+                <span class="job-title">Software Engineer</span>
+                <span class="job-meta">August 2021 - September 2022</span>
+            </div>
+            <div class="company">IoT83</div>
+            <div class="job-location">Gurugram, Haryana, India</div>
+            <ul>
+                <li>Developed enterprise Java applications strengthening J2EE and Spring Boot expertise</li>
+                <li>Collaborated directly with clients to gather requirements and deliver customized product solutions</li>
+                <li>Designed and implemented secured RESTful APIs with Spring Security for web applications</li>
+                <li>Implemented multi-database architecture using MySQL, MongoDB, and InfluxDB for time-series data</li>
+                <li>Built file storage and retrieval system using MinIO for high-performance object storage</li>
+                <li>Participated in Agile ceremonies and contributed to sprint planning and retrospectives</li>
+            </ul>
+        </div>
+
+        <!-- Software Engineer Intern -->
+        <div class="job">
+            <div class="job-header">
+                <span class="job-title">Software Engineer Intern</span>
+                <span class="job-meta">May 2021 - July 2021</span>
+            </div>
+            <div class="company">IoT83</div>
+            <div class="job-location">Gurugram, Haryana, India</div>
+            <ul>
+                <li>Developed strong foundation in Spring Boot framework including IoC container and bean lifecycle management</li>
+                <li>Applied SOLID principles and design patterns for maintainable code architecture</li>
+                <li>Enhanced data structures and algorithms skills through practical implementation</li>
+            </ul>
+        </div>
+
+        <!-- Assistant Design Engineer -->
+        <div class="job">
+            <div class="job-header">
+                <span class="job-title">Assistant Design Engineer</span>
+                <span class="job-meta">July 2020 - April 2021</span>
+            </div>
+            <div class="company">DDF Consultants Private Limited</div>
+            <div class="job-location">New Delhi, India</div>
+            <ul>
+                <li>Performed structural analysis using ETABS and SAFE software for earthquake-resistant designs</li>
+                <li>Conducted linear and non-linear time history analysis for building safety assessment</li>
+                <li>Developed analytical problem-solving skills transferable to software architecture</li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- AI & Agent Skills Section -->
+    <section class="section">
+        <h2 class="section-title">AI & Multi-Agent Systems Expertise</h2>
+        <ul>
+            <li><strong>Model Context Protocol (MCP):</strong> Designed and implemented MCP servers for tool integration, enabling AI agents to interact with databases, APIs, and enterprise systems</li>
+            <li><strong>Multi-Agent Orchestration:</strong> Built systems coordinating multiple AI agents for complex task decomposition and parallel processing</li>
+            <li><strong>LLM Integration:</strong> Integrated Claude and other LLMs into production applications for intelligent automation</li>
+        </ul>
+    </section>
+
+    <!-- Education -->
+    <section class="section">
+        <h2 class="section-title">Education</h2>
+        <div class="education-item">
+            <div class="degree">Bachelor of Technology in Civil Engineering</div>
+            <div class="school">Rayat Bahra University</div>
+            <div class="edu-date">2015 - 2019 | CGPA: 8.45</div>
+        </div>
+        <div class="education-item">
+            <div class="degree">Senior Secondary (12th Grade) - PCM</div>
+            <div class="school">Triple M Public School</div>
+            <div class="edu-date">2014 - 2015 | CGPA: 7.75</div>
+        </div>
+        <div class="education-item">
+            <div class="degree">Secondary (10th Grade)</div>
+            <div class="school">Jawahar Navodaya Vidyalaya (JNV)</div>
+            <div class="edu-date">2008 - 2014 | CGPA: 9.0</div>
+        </div>
+    </section>
+
+    <!-- Certifications -->
+    <section class="section">
+        <h2 class="section-title">Certifications</h2>
+        <ul>
+            <li>Linux Administration Certificate</li>
+            <li>Friction Dampers and Seismic Energy Dissipation</li>
+        </ul>
+    </section>
+
+    <!-- Key Achievements -->
+    <section class="section">
+        <h2 class="section-title">Key Achievements</h2>
+        <ul>
+            <li>Successfully led career transition from Civil Engineering to Software Engineering, demonstrating adaptability and learning agility</li>
+            <li>Architected data pipelines handling high-volume transaction processing with 99.9% uptime</li>
+            <li>Reduced API response time by 40% through optimization and caching strategies</li>
+            <li>Built and grew professional network to 1000+ LinkedIn followers and 500+ connections</li>
+        </ul>
+    </section>
+    </div>
+    <script>
+        // Load theme from localStorage
+        const savedTheme = localStorage.getItem('portfolio-theme') || 'default';
+        document.getElementById('theme-style').href = `themes/${savedTheme}.css`;
+    </script>
+</body>
+</html>

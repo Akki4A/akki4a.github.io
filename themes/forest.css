@@ -1,0 +1,49 @@
+/* ============================================
+   FOREST THEME
+   Natural, earthy, calming green tones
+   ============================================ */
+
+:root {
+    /* Background Colors */
+    --bg-primary: #1a2e1a;
+    --bg-secondary: #243324;
+    --bg-card: #2d3f2d;
+
+    /* Text Colors */
+    --text-primary: #e8f5e8;
+    --text-secondary: #a8c5a8;
+    --text-muted: #7a9b7a;
+
+    /* Accent Colors */
+    --accent-primary: #4ade80;
+    --accent-hover: #22c55e;
+    --accent-shadow: rgba(74, 222, 128, 0.3);
+
+    /* Border Colors */
+    --border-color: #3d5a3d;
+
+    /* Navigation */
+    --nav-bg: rgba(26, 46, 26, 0.9);
+
+    /* Hero */
+    --hero-gradient: radial-gradient(ellipse at top, #166534 0%, transparent 50%);
+    --grid-color: rgba(74, 222, 128, 0.05);
+    --badge-bg: rgba(74, 222, 128, 0.2);
+
+    /* Text Gradient */
+    --text-gradient: linear-gradient(135deg, #4ade80 0%, #a3e635 100%);
+
+    /* Tags & Icons */
+    --tag-bg: rgba(74, 222, 128, 0.15);
+    --icon-bg: rgba(74, 222, 128, 0.2);
+
+    /* Code Block */
+    --code-bg: #1a2e1a;
+    --code-header-bg: #243324;
+    --code-text: #a8c5a8;
+    --code-keyword: #4ade80;
+    --code-class: #a3e635;
+    --code-string: #86efac;
+    --code-number: #fbbf24;
+    --code-method: #6ee7b7;
+}

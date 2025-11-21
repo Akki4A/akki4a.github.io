@@ -1,0 +1,49 @@
+/* ============================================
+   OCEAN THEME
+   Deep blue, calm, professional
+   ============================================ */
+
+:root {
+    /* Background Colors */
+    --bg-primary: #0c1929;
+    --bg-secondary: #132f4c;
+    --bg-card: #173a5e;
+
+    /* Text Colors */
+    --text-primary: #ffffff;
+    --text-secondary: #b2bac2;
+    --text-muted: #7b8a97;
+
+    /* Accent Colors */
+    --accent-primary: #0ea5e9;
+    --accent-hover: #0284c7;
+    --accent-shadow: rgba(14, 165, 233, 0.3);
+
+    /* Border Colors */
+    --border-color: #1e4976;
+
+    /* Navigation */
+    --nav-bg: rgba(12, 25, 41, 0.9);
+
+    /* Hero */
+    --hero-gradient: radial-gradient(ellipse at top, #0369a1 0%, transparent 50%);
+    --grid-color: rgba(14, 165, 233, 0.05);
+    --badge-bg: rgba(14, 165, 233, 0.2);
+
+    /* Text Gradient */
+    --text-gradient: linear-gradient(135deg, #0ea5e9 0%, #22d3ee 100%);
+
+    /* Tags & Icons */
+    --tag-bg: rgba(14, 165, 233, 0.15);
+    --icon-bg: rgba(14, 165, 233, 0.2);
+
+    /* Code Block */
+    --code-bg: #001e3c;
+    --code-header-bg: #0a2744;
+    --code-text: #b2bac2;
+    --code-keyword: #5de4c7;
+    --code-class: #89ddff;
+    --code-string: #add7ff;
+    --code-number: #fffac2;
+    --code-method: #91b4d5;
+}
