@@ -11,6 +11,9 @@
     <link id="theme-style" rel="stylesheet" href="themes/default.css">
 </head>
 <body>
+    <!-- Scroll Progress Indicator -->
+    <div class="scroll-progress"></div>
+
     <!-- Floating Theme Switcher -->
     <div class="theme-switcher">
         <button class="theme-toggle" aria-label="Toggle theme menu">
@@ -69,7 +72,37 @@
         <div class="hero-bg">
             <div class="hero-gradient"></div>
             <div class="hero-grid"></div>
+            <!-- Floating Particles -->
+            <div class="particles-container">
+                <div class="particle"></div>
+                <div class="particle"></div>
+                <div class="particle"></div>
+                <div class="particle"></div>
+                <div class="particle"></div>
+                <div class="particle"></div>
+                <div class="particle"></div>
+                <div class="particle"></div>
+                <div class="particle"></div>
+                <div class="particle"></div>
+                <div class="particle"></div>
+                <div class="particle"></div>
+            </div>
+            <!-- Floating Code Symbols -->
+            <div class="code-symbols">
+                <span class="code-symbol">&lt;/&gt;</span>
+                <span class="code-symbol">{}</span>
+                <span class="code-symbol">( )</span>
+                <span class="code-symbol">[ ]</span>
+                <span class="code-symbol">=&gt;</span>
+                <span class="code-symbol">/**</span>
+            </div>
+            <!-- Animated Blobs -->
+            <div class="blob blob-1"></div>
+            <div class="blob blob-2"></div>
+            <div class="blob blob-3"></div>
         </div>
+        <!-- Mouse Glow Effect -->
+        <div class="mouse-glow"></div>
         <div class="container">
             <div class="hero-content">
             <div class="hero-badge animate-fade-in">
@@ -99,7 +132,7 @@
                     <span class="stat-label">LinkedIn Followers</span>
                 </div>
                 <div class="stat">
-                    <span class="stat-number" data-count="500">0</span><span class="stat-plus">+</span>
+                    <span class="stat-number" data-count="1000">0</span><span class="stat-plus">+</span>
                     <span class="stat-label">Connections</span>
                 </div>
             </div>
@@ -230,6 +263,7 @@
     <span class="keyword">public</span> List&lt;String&gt; <span class="method">getSkills</span>() {
         <span class="keyword">return</span> Arrays.asList(
             <span class="string">"Java"</span>, <span class="string">"Spring Boot"</span>,
+            <span class="string">"MCP"</span>, <span class="string">"Observability"</span>,
             <span class="string">"Kafka"</span>, <span class="string">"Redis"</span>,
             <span class="string">"MongoDB"</span>, <span class="string">"Elasticsearch"</span>
         );
@@ -578,7 +612,7 @@
                                 <span class="method-value">Akshya Pandey</span>
                             </div>
                         </a>
-                        <div class="contact-method">
+                        <a href="https://www.google.com/maps/place/Malibu+Town,+Sector+47,+Gurugram,+Haryana+122018" target="_blank" class="contact-method">
                             <div class="method-icon">
                                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                                     <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
@@ -589,7 +623,7 @@
                                 <span class="method-label">Location</span>
                                 <span class="method-value">Gurugram, India</span>
                             </div>
-                        </div>
+                        </a>
                     </div>
                 </div>
                 <div class="contact-form-wrapper">

@@ -46,4 +46,9 @@
     --code-string: #e879f9;
     --code-number: #fbbf24;
     --code-method: #a78bfa;
+
+    /* Career Transition Badge - Teal/Cyan to contrast with purple */
+    --career-switch-bg: linear-gradient(135deg, #2dd4bf, #14b8a6);
+    --career-switch-text: #1e1b2e;
+    --career-switch-color: #2dd4bf;
 }

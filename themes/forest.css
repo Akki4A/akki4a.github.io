@@ -46,4 +46,9 @@
     --code-string: #86efac;
     --code-number: #fbbf24;
     --code-method: #6ee7b7;
+
+    /* Career Transition Badge - Pink/Magenta to contrast with green */
+    --career-switch-bg: linear-gradient(135deg, #f472b6, #ec4899);
+    --career-switch-text: white;
+    --career-switch-color: #f472b6;
 }

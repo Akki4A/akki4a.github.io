@@ -590,6 +590,520 @@ a {
 }
 
 /* ============================================
+   FLOATING PARTICLES
+   ============================================ */
+.particles-container {
+    position: absolute;
+    inset: 0;
+    overflow: hidden;
+    pointer-events: none;
+}
+
+.particle {
+    position: absolute;
+    width: 8px;
+    height: 8px;
+    background: var(--accent-primary);
+    border-radius: 50%;
+    opacity: 0.5;
+    box-shadow: 0 0 10px var(--accent-primary), 0 0 20px var(--accent-shadow);
+    animation: floatParticle 15s infinite ease-in-out;
+    will-change: transform, opacity;
+}
+
+.particle:nth-child(1) { left: 10%; top: 20%; animation-delay: 0s; animation-duration: 12s; }
+.particle:nth-child(2) { left: 20%; top: 80%; animation-delay: 1s; animation-duration: 14s; }
+.particle:nth-child(3) { left: 30%; top: 40%; animation-delay: 2s; animation-duration: 16s; }
+.particle:nth-child(4) { left: 40%; top: 60%; animation-delay: 3s; animation-duration: 13s; }
+.particle:nth-child(5) { left: 50%; top: 30%; animation-delay: 4s; animation-duration: 15s; }
+.particle:nth-child(6) { left: 60%; top: 70%; animation-delay: 5s; animation-duration: 11s; }
+.particle:nth-child(7) { left: 70%; top: 50%; animation-delay: 6s; animation-duration: 17s; }
+.particle:nth-child(8) { left: 80%; top: 25%; animation-delay: 7s; animation-duration: 14s; }
+.particle:nth-child(9) { left: 85%; top: 75%; animation-delay: 8s; animation-duration: 12s; }
+.particle:nth-child(10) { left: 15%; top: 55%; animation-delay: 9s; animation-duration: 16s; }
+.particle:nth-child(11) { left: 45%; top: 85%; animation-delay: 10s; animation-duration: 13s; }
+.particle:nth-child(12) { left: 75%; top: 15%; animation-delay: 11s; animation-duration: 15s; }
+
+@keyframes floatParticle {
+    0% {
+        transform: translate(0, 0) scale(1);
+        opacity: 0.3;
+    }
+    20% {
+        transform: translate(40px, -60px) scale(1.3);
+        opacity: 0.7;
+    }
+    40% {
+        transform: translate(-30px, -120px) scale(0.9);
+        opacity: 0.5;
+    }
+    60% {
+        transform: translate(50px, -80px) scale(1.2);
+        opacity: 0.8;
+    }
+    80% {
+        transform: translate(-20px, -40px) scale(1.1);
+        opacity: 0.6;
+    }
+    100% {
+        transform: translate(0, 0) scale(1);
+        opacity: 0.3;
+    }
+}
+
+/* ============================================
+   FLOATING CODE SYMBOLS
+   ============================================ */
+.code-symbols {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    overflow: hidden;
+}
+
+.code-symbol {
+    position: absolute;
+    font-family: var(--font-mono);
+    font-size: 1.5rem;
+    color: var(--accent-primary);
+    opacity: 0.15;
+    animation: floatSymbol 20s infinite ease-in-out;
+}
+
+.code-symbol:nth-child(1) { left: 5%; top: 15%; animation-delay: 0s; font-size: 2rem; }
+.code-symbol:nth-child(2) { left: 92%; top: 25%; animation-delay: 3s; font-size: 1.8rem; }
+.code-symbol:nth-child(3) { left: 8%; top: 75%; animation-delay: 6s; font-size: 1.5rem; }
+.code-symbol:nth-child(4) { left: 88%; top: 80%; animation-delay: 9s; font-size: 2.2rem; }
+.code-symbol:nth-child(5) { left: 15%; top: 45%; animation-delay: 12s; font-size: 1.6rem; }
+.code-symbol:nth-child(6) { left: 82%; top: 55%; animation-delay: 15s; font-size: 1.9rem; }
+
+@keyframes floatSymbol {
+    0%, 100% {
+        transform: translateY(0) rotate(0deg);
+        opacity: 0.15;
+    }
+    50% {
+        transform: translateY(-30px) rotate(15deg);
+        opacity: 0.25;
+    }
+}
+
+/* ============================================
+   ANIMATED BLOBS
+   ============================================ */
+.blob {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(80px);
+    opacity: 0.4;
+    animation: blobFloat 20s infinite ease-in-out;
+    pointer-events: none;
+}
+
+.blob-1 {
+    width: 400px;
+    height: 400px;
+    background: var(--accent-primary);
+    top: -100px;
+    right: -100px;
+    animation-delay: 0s;
+}
+
+.blob-2 {
+    width: 300px;
+    height: 300px;
+    background: var(--accent-hover);
+    bottom: -50px;
+    left: -50px;
+    animation-delay: 5s;
+}
+
+.blob-3 {
+    width: 250px;
+    height: 250px;
+    background: var(--accent-primary);
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    animation-delay: 10s;
+    opacity: 0.2;
+}
+
+@keyframes blobFloat {
+    0%, 100% {
+        transform: translate(0, 0) scale(1);
+    }
+    25% {
+        transform: translate(30px, -30px) scale(1.1);
+    }
+    50% {
+        transform: translate(-20px, 20px) scale(0.9);
+    }
+    75% {
+        transform: translate(20px, 30px) scale(1.05);
+    }
+}
+
+/* ============================================
+   MOUSE GLOW EFFECT
+   ============================================ */
+.mouse-glow {
+    position: fixed;
+    width: 300px;
+    height: 300px;
+    border-radius: 50%;
+    background: radial-gradient(circle, var(--accent-primary) 0%, transparent 70%);
+    opacity: 0.1;
+    pointer-events: none;
+    transform: translate(-50%, -50%);
+    z-index: 0;
+    transition: opacity 0.3s ease;
+}
+
+/* ============================================
+   GLOWING CARD BORDERS
+   ============================================ */
+.highlight-card,
+.timeline-content,
+.contact-method {
+    position: relative;
+    overflow: hidden;
+}
+
+/* Light sweep effect for highlight cards only */
+.highlight-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+        90deg,
+        transparent,
+        var(--accent-shadow, rgba(59, 130, 246, 0.15)),
+        transparent
+    );
+    transition: left 0.6s ease;
+    pointer-events: none;
+    z-index: 1;
+}
+
+.highlight-card:hover::before {
+    left: 100%;
+}
+
+/* Glowing border animation with theme colors */
+@keyframes borderGlow {
+    0%, 100% {
+        box-shadow: var(--shadow-lg), 0 0 10px var(--accent-shadow, rgba(59, 130, 246, 0.2));
+    }
+    50% {
+        box-shadow: var(--shadow-lg), 0 0 25px var(--accent-shadow, rgba(59, 130, 246, 0.4)),
+                    0 0 40px var(--accent-shadow, rgba(59, 130, 246, 0.2));
+    }
+}
+
+.skill-category:hover,
+.highlight-card:hover,
+.project-card:hover,
+.timeline-content:hover,
+.contact-method:hover {
+    animation: borderGlow 2s ease-in-out infinite;
+    border-color: var(--accent-primary);
+}
+
+/* ============================================
+   FLOATING SKILL TAGS
+   ============================================ */
+.skill-tag {
+    animation: floatTag 3s infinite ease-in-out;
+    animation-play-state: paused;
+}
+
+.skill-category:hover .skill-tag {
+    animation-play-state: running;
+}
+
+.skill-tag:nth-child(1) { animation-delay: 0s; }
+.skill-tag:nth-child(2) { animation-delay: 0.1s; }
+.skill-tag:nth-child(3) { animation-delay: 0.2s; }
+.skill-tag:nth-child(4) { animation-delay: 0.3s; }
+.skill-tag:nth-child(5) { animation-delay: 0.4s; }
+.skill-tag:nth-child(6) { animation-delay: 0.5s; }
+
+@keyframes floatTag {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-5px); }
+}
+
+/* ============================================
+   INTERACTIVE RIPPLE EFFECT
+   ============================================ */
+.btn {
+    position: relative;
+    overflow: hidden;
+}
+
+.btn .ripple {
+    position: absolute;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.4);
+    transform: scale(0);
+    animation: rippleEffect 0.6s linear;
+    pointer-events: none;
+}
+
+@keyframes rippleEffect {
+    to {
+        transform: scale(4);
+        opacity: 0;
+    }
+}
+
+/* ============================================
+   ENHANCED SOCIAL LINKS
+   ============================================ */
+.social-link {
+    position: relative;
+    overflow: visible !important;
+}
+
+.social-link .pulse-ring {
+    position: absolute;
+    inset: -4px;
+    border-radius: 50%;
+    border: 2px solid var(--accent-primary);
+    opacity: 0;
+    transform: scale(1.2);
+    transition: all 0.3s ease;
+    pointer-events: none;
+}
+
+.social-link:hover .pulse-ring {
+    opacity: 1;
+    transform: scale(1);
+    animation: socialPulse 1s infinite;
+}
+
+@keyframes socialPulse {
+    0%, 100% { transform: scale(1); opacity: 1; }
+    50% { transform: scale(1.1); opacity: 0.5; }
+}
+
+/* Tooltip positioning fix for social links */
+.hero-social {
+    overflow: visible;
+}
+
+.hero-social .social-link[data-tooltip]::after {
+    bottom: calc(100% + 15px);
+    z-index: 1001;
+}
+
+.hero-social .social-link[data-tooltip]::before {
+    bottom: calc(100% + 9px);
+    z-index: 1001;
+}
+
+
+/* ============================================
+   TOOLTIP STYLES
+   ============================================ */
+[data-tooltip] {
+    position: relative;
+    cursor: pointer;
+}
+
+[data-tooltip]::after {
+    content: attr(data-tooltip);
+    position: absolute;
+    bottom: calc(100% + 12px);
+    left: 50%;
+    transform: translateX(-50%) translateY(5px);
+    padding: 0.5rem 1rem;
+    background: var(--bg-card);
+    color: var(--text-primary);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-sm);
+    font-size: 0.875rem;
+    font-weight: 500;
+    white-space: nowrap;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, transform 0.3s ease, visibility 0.3s ease;
+    box-shadow: var(--shadow-lg);
+    z-index: 1000;
+    pointer-events: none;
+}
+
+[data-tooltip]::before {
+    content: '';
+    position: absolute;
+    bottom: calc(100% + 6px);
+    left: 50%;
+    transform: translateX(-50%) translateY(5px);
+    border: 6px solid transparent;
+    border-top-color: var(--bg-card);
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, transform 0.3s ease, visibility 0.3s ease;
+    z-index: 1000;
+    pointer-events: none;
+}
+
+[data-tooltip]:hover::after {
+    opacity: 1;
+    visibility: visible;
+    transform: translateX(-50%) translateY(0);
+}
+
+[data-tooltip]:hover::before {
+    opacity: 1;
+    visibility: visible;
+    transform: translateX(-50%) translateY(0);
+}
+
+/* ============================================
+   STAT NUMBERS - No hover animation
+   ============================================ */
+.stat {
+    cursor: default;
+}
+
+/* ============================================
+   WAVE ANIMATION FOR SECTIONS
+   ============================================ */
+.about::before,
+.experience::before,
+.contact::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 100px;
+    background: linear-gradient(to bottom, var(--bg-primary), transparent);
+    pointer-events: none;
+}
+
+/* ============================================
+   ENHANCED IMAGE DECORATION
+   ============================================ */
+.image-decoration {
+    animation: decorationPulse 4s infinite ease-in-out;
+}
+
+@keyframes decorationPulse {
+    0%, 100% {
+        transform: scale(1);
+        opacity: 0.1;
+    }
+    50% {
+        transform: scale(1.2);
+        opacity: 0.2;
+    }
+}
+
+.image-border {
+    animation: borderFloat 6s infinite ease-in-out;
+}
+
+@keyframes borderFloat {
+    0%, 100% {
+        transform: translate(15px, 15px);
+    }
+    50% {
+        transform: translate(20px, 20px);
+    }
+}
+
+/* ============================================
+   CODE WINDOW TYPING ANIMATION
+   ============================================ */
+.code-content code {
+    animation: codeGlow 3s infinite ease-in-out;
+}
+
+@keyframes codeGlow {
+    0%, 100% { text-shadow: none; }
+    50% { text-shadow: 0 0 10px var(--accent-shadow); }
+}
+
+/* ============================================
+   LOADING SHIMMER FOR CARDS
+   ============================================ */
+.project-image::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 50%;
+    height: 100%;
+    background: linear-gradient(
+        90deg,
+        transparent,
+        var(--accent-shadow, rgba(255, 255, 255, 0.1)),
+        transparent
+    );
+    animation: shimmer 4s infinite;
+    animation-delay: 1s;
+    pointer-events: none;
+}
+
+@keyframes shimmer {
+    0% { left: -100%; opacity: 0; }
+    10% { opacity: 1; }
+    90% { opacity: 1; }
+    100% { left: 200%; opacity: 0; }
+}
+
+/* ============================================
+   CURSOR TRAIL DOTS
+   ============================================ */
+.cursor-dot {
+    position: fixed;
+    width: 8px;
+    height: 8px;
+    background: var(--accent-primary);
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 9999;
+    opacity: 0.7;
+    transition: transform 0.1s ease;
+}
+
+/* ============================================
+   SCROLL PROGRESS INDICATOR
+   ============================================ */
+.scroll-progress {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 0%;
+    height: 3px;
+    background: linear-gradient(90deg, var(--accent-primary), var(--accent-hover));
+    z-index: 1001;
+    transition: width 0.1s ease;
+}
+
+/* ============================================
+   TIMELINE PULSE ANIMATION
+   ============================================ */
+.timeline-marker.current {
+    animation: timelinePulse 2s infinite;
+}
+
+@keyframes timelinePulse {
+    0%, 100% {
+        box-shadow: 0 0 0 0 var(--accent-shadow);
+    }
+    50% {
+        box-shadow: 0 0 0 10px transparent;
+    }
+}
+
+/* ============================================
    ANIMATIONS
    ============================================ */
 .animate-fade-in {
@@ -660,6 +1174,7 @@ section {
    ============================================ */
 .about {
     background: var(--bg-secondary);
+    position: relative;
 }
 
 .about-content {
@@ -885,6 +1400,7 @@ section {
    ============================================ */
 .experience {
     background: var(--bg-secondary);
+    position: relative;
 }
 
 .timeline {
@@ -940,8 +1456,8 @@ section {
 }
 
 .timeline-marker.switch {
-    border-color: #f97316;
-    background: #f97316;
+    border-color: var(--career-switch-color, #f97316);
+    background: var(--career-switch-color, #f97316);
 }
 
 .timeline-content {
@@ -1026,12 +1542,18 @@ section {
 .career-switch-badge {
     display: inline-block;
     padding: 0.375rem 0.75rem;
-    background: linear-gradient(135deg, #f97316, #ea580c);
-    color: white;
+    background: var(--career-switch-bg, linear-gradient(135deg, #f97316, #ea580c));
+    color: var(--career-switch-text, white);
     border-radius: var(--radius-full);
     font-size: 0.75rem;
     font-weight: 600;
     margin-bottom: 1rem;
+    animation: badgePulse 3s ease-in-out infinite;
+}
+
+@keyframes badgePulse {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.05); }
 }
 
 /* ============================================
@@ -1097,16 +1619,23 @@ section {
 
 .project-link {
     padding: 0.75rem 1.5rem;
-    background: white;
-    color: #1a1a1a;
+    background: var(--bg-card);
+    color: var(--text-primary);
     border-radius: var(--radius-full);
     font-weight: 600;
     transform: translateY(20px);
-    transition: transform var(--transition-fast);
+    transition: transform var(--transition-fast), background var(--transition-fast), color var(--transition-fast);
+    border: 1px solid var(--border-color);
 }
 
 .project-card:hover .project-link {
     transform: translateY(0);
+}
+
+.project-link:hover {
+    background: var(--accent-primary);
+    color: white;
+    border-color: var(--accent-primary);
 }
 
 .project-content {
@@ -1184,13 +1713,14 @@ section {
    ============================================ */
 .contact {
     background: var(--bg-secondary);
+    position: relative;
 }
 
 .contact-wrapper {
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 4rem;
-    align-items: start;
+    align-items: end;
 }
 
 .contact-description {
@@ -1305,8 +1835,29 @@ section {
 }
 
 .form-group textarea {
-    resize: vertical;
+    resize: none;
     min-height: 120px;
+    max-height: 200px;
+    overflow-y: auto;
+}
+
+/* Custom scrollbar for textarea */
+.form-group textarea::-webkit-scrollbar {
+    width: 8px;
+}
+
+.form-group textarea::-webkit-scrollbar-track {
+    background: var(--bg-secondary);
+    border-radius: 4px;
+}
+
+.form-group textarea::-webkit-scrollbar-thumb {
+    background: var(--accent-primary);
+    border-radius: 4px;
+}
+
+.form-group textarea::-webkit-scrollbar-thumb:hover {
+    background: var(--accent-hover);
 }
 
 .form-status {
@@ -1389,6 +1940,8 @@ section {
     background: var(--bg-secondary);
     color: var(--text-secondary);
     transition: all var(--transition-fast);
+    position: relative;
+    overflow: visible;
 }
 
 .footer-social a svg {
@@ -1400,6 +1953,38 @@ section {
     background: var(--accent-primary);
     color: white;
     transform: translateY(-3px);
+}
+
+/* Footer social link tooltips and pulse ring */
+.footer-social {
+    overflow: visible;
+}
+
+.footer-social a[data-tooltip]::after {
+    bottom: calc(100% + 12px);
+    z-index: 1001;
+}
+
+.footer-social a[data-tooltip]::before {
+    bottom: calc(100% + 6px);
+    z-index: 1001;
+}
+
+.footer-social a .pulse-ring {
+    position: absolute;
+    inset: -4px;
+    border-radius: 50%;
+    border: 2px solid var(--accent-primary);
+    opacity: 0;
+    transform: scale(1.2);
+    transition: all 0.3s ease;
+    pointer-events: none;
+}
+
+.footer-social a:hover .pulse-ring {
+    opacity: 1;
+    transform: scale(1);
+    animation: socialPulse 1s infinite;
 }
 
 .footer-bottom {

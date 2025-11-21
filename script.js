@@ -11,6 +11,14 @@ document.addEventListener('DOMContentLoaded', () => {
     initCounterAnimation();
     initContactForm();
     setCurrentYear();
+
+    // Initialize new interactive features
+    initMouseGlow();
+    initScrollProgress();
+    initRippleEffect();
+    initTooltips();
+    initParticleInteraction();
+    initCardTilt();
 });
 
 /* ============================================
@@ -254,8 +262,12 @@ function initCounterAnimation() {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
                 const counter = entry.target;
+                // Only animate if not already animated
+                if (counter.dataset.animated === 'true') return;
+
                 const target = parseInt(counter.dataset.count);
                 animateCounter(counter, target);
+                counter.dataset.animated = 'true';
                 observer.unobserve(counter);
             }
         });
@@ -388,6 +400,195 @@ if (hero) {
         }
     });
 }
+
+/* ============================================
+   MOUSE GLOW EFFECT
+   ============================================ */
+function initMouseGlow() {
+    const mouseGlow = document.querySelector('.mouse-glow');
+    if (!mouseGlow) return;
+
+    let mouseX = 0, mouseY = 0;
+    let currentX = 0, currentY = 0;
+
+    document.addEventListener('mousemove', (e) => {
+        mouseX = e.clientX;
+        mouseY = e.clientY;
+    });
+
+    // Smooth animation loop
+    function animate() {
+        currentX += (mouseX - currentX) * 0.1;
+        currentY += (mouseY - currentY) * 0.1;
+
+        mouseGlow.style.left = `${currentX}px`;
+        mouseGlow.style.top = `${currentY}px`;
+
+        requestAnimationFrame(animate);
+    }
+    animate();
+
+    // Show/hide glow based on scroll position
+    window.addEventListener('scroll', () => {
+        if (window.scrollY > window.innerHeight) {
+            mouseGlow.style.opacity = '0';
+        } else {
+            mouseGlow.style.opacity = '0.1';
+        }
+    });
+}
+
+/* ============================================
+   SCROLL PROGRESS INDICATOR
+   ============================================ */
+function initScrollProgress() {
+    const progressBar = document.querySelector('.scroll-progress');
+    if (!progressBar) return;
+
+    window.addEventListener('scroll', () => {
+        const windowHeight = document.documentElement.scrollHeight - window.innerHeight;
+        const scrolled = (window.scrollY / windowHeight) * 100;
+        progressBar.style.width = `${scrolled}%`;
+    });
+}
+
+/* ============================================
+   RIPPLE EFFECT ON BUTTONS
+   ============================================ */
+function initRippleEffect() {
+    const buttons = document.querySelectorAll('.btn');
+
+    buttons.forEach(btn => {
+        btn.addEventListener('click', function(e) {
+            // Create ripple element
+            const ripple = document.createElement('span');
+            ripple.classList.add('ripple');
+
+            // Calculate position
+            const rect = btn.getBoundingClientRect();
+            const size = Math.max(rect.width, rect.height);
+            const x = e.clientX - rect.left - size / 2;
+            const y = e.clientY - rect.top - size / 2;
+
+            ripple.style.width = ripple.style.height = `${size}px`;
+            ripple.style.left = `${x}px`;
+            ripple.style.top = `${y}px`;
+
+            btn.appendChild(ripple);
+
+            // Remove ripple after animation
+            setTimeout(() => {
+                ripple.remove();
+            }, 600);
+        });
+    });
+}
+
+/* ============================================
+   TOOLTIPS FOR SOCIAL LINKS
+   ============================================ */
+function initTooltips() {
+    // Add tooltips and pulse rings to social links
+    const socialLinks = document.querySelectorAll('.hero-social .social-link');
+    const tooltipTexts = ['LinkedIn', 'Twitter / X', 'Instagram', 'GitHub'];
+
+    socialLinks.forEach((link, index) => {
+        // Add tooltip
+        if (tooltipTexts[index]) {
+            link.setAttribute('data-tooltip', tooltipTexts[index]);
+        }
+
+        // Add pulse ring element
+        if (!link.querySelector('.pulse-ring')) {
+            const pulseRing = document.createElement('span');
+            pulseRing.classList.add('pulse-ring');
+            link.appendChild(pulseRing);
+        }
+    });
+
+    // Also add pulse rings and tooltips to footer social links
+    const footerSocialLinks = document.querySelectorAll('.footer-social a');
+    const footerTooltipTexts = ['LinkedIn', 'Twitter / X', 'Instagram', 'GitHub'];
+
+    footerSocialLinks.forEach((link, index) => {
+        // Add tooltip
+        if (footerTooltipTexts[index]) {
+            link.setAttribute('data-tooltip', footerTooltipTexts[index]);
+        }
+
+        // Add pulse ring element
+        if (!link.querySelector('.pulse-ring')) {
+            const pulseRing = document.createElement('span');
+            pulseRing.classList.add('pulse-ring');
+            link.appendChild(pulseRing);
+        }
+    });
+
+}
+
+/* ============================================
+   PARTICLE INTERACTION ON MOUSE MOVE
+   (Simplified - particles follow mouse slightly without breaking CSS animation)
+   ============================================ */
+function initParticleInteraction() {
+    // Particles use CSS animation only - no JS interference
+    // This keeps the floating effect smooth and consistent
+}
+
+/* ============================================
+   3D CARD TILT EFFECT
+   (Subtle effect for skill and highlight cards only - not project cards)
+   ============================================ */
+function initCardTilt() {
+    // Only apply subtle tilt to smaller cards, not project cards
+    const cards = document.querySelectorAll('.skill-category, .highlight-card');
+
+    cards.forEach(card => {
+        card.addEventListener('mousemove', (e) => {
+            const rect = card.getBoundingClientRect();
+            const x = e.clientX - rect.left;
+            const y = e.clientY - rect.top;
+
+            const centerX = rect.width / 2;
+            const centerY = rect.height / 2;
+
+            // Very subtle tilt - reduced from /20 to /50
+            const rotateX = (y - centerY) / 50;
+            const rotateY = (centerX - x) / 50;
+
+            card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateY(-3px)`;
+        });
+
+        card.addEventListener('mouseleave', () => {
+            card.style.transform = 'perspective(1000px) rotateX(0) rotateY(0) translateY(0)';
+            card.style.transition = 'transform 0.3s ease';
+        });
+
+        card.addEventListener('mouseenter', () => {
+            card.style.transition = 'transform 0.1s ease';
+        });
+    });
+}
+
+/* ============================================
+   MAGNETIC BUTTONS
+   ============================================ */
+const magneticBtns = document.querySelectorAll('.btn-primary, .nav-cta');
+magneticBtns.forEach(btn => {
+    btn.addEventListener('mousemove', (e) => {
+        const rect = btn.getBoundingClientRect();
+        const x = e.clientX - rect.left - rect.width / 2;
+        const y = e.clientY - rect.top - rect.height / 2;
+
+        btn.style.transform = `translate(${x * 0.3}px, ${y * 0.3}px)`;
+    });
+
+    btn.addEventListener('mouseleave', () => {
+        btn.style.transform = 'translate(0, 0)';
+    });
+});
+
+/* Text scramble effect removed for better UX */
 
 /* ============================================
    UTILITY: Typing effect for hero subtitle

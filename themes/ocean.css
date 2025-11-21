@@ -46,4 +46,9 @@
     --code-string: #add7ff;
     --code-number: #fffac2;
     --code-method: #91b4d5;
+
+    /* Career Transition Badge - Pink/Rose to contrast with blue */
+    --career-switch-bg: linear-gradient(135deg, #ec4899, #db2777);
+    --career-switch-text: white;
+    --career-switch-color: #ec4899;
 }
