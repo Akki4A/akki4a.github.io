@@ -2143,3 +2143,670 @@ section {
         padding-left: 2.5rem;
     }
 }
+
+/* ============================================
+   IPAD & TABLET SPECIFIC STYLES (768px - 1024px)
+   ============================================ */
+@media (min-width: 768px) and (max-width: 1024px) {
+    /* Hero adjustments for iPad */
+    .hero > .container {
+        flex-direction: row;
+        gap: 2rem;
+        padding: 0 1.5rem;
+    }
+
+    .hero-content {
+        max-width: 55%;
+    }
+
+    .hero-image {
+        order: 0;
+    }
+
+    .image-wrapper {
+        width: 280px;
+        height: 320px;
+    }
+
+    .hero-stats {
+        flex-direction: row;
+        flex-wrap: wrap;
+        gap: 1rem;
+    }
+
+    .stat {
+        flex: 1;
+        min-width: 100px;
+    }
+
+    /* About section for iPad */
+    .about-content {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+
+    .about-highlights {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 1rem;
+    }
+
+    .highlight-card {
+        padding: 1rem;
+    }
+
+    .highlight-card h4 {
+        font-size: 0.9rem;
+    }
+
+    .highlight-card p {
+        font-size: 0.8rem;
+    }
+
+    /* Skills grid for iPad - 2 columns */
+    .skills-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1rem;
+    }
+
+    .skill-category {
+        padding: 1.5rem;
+    }
+
+    /* Projects grid for iPad */
+    .projects-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1.5rem;
+    }
+
+    .project-card.featured {
+        grid-column: span 2;
+    }
+
+    /* Contact section for iPad */
+    .contact-wrapper {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+
+    .contact-form-wrapper {
+        padding: 1.5rem;
+    }
+
+    /* Footer for iPad */
+    .footer-content {
+        flex-direction: row;
+        justify-content: space-between;
+    }
+
+    .footer-nav {
+        flex-wrap: wrap;
+        gap: 1rem;
+    }
+
+    /* Navigation adjustments */
+    .nav-menu {
+        gap: 1rem;
+    }
+
+    .nav-link {
+        font-size: 0.9rem;
+    }
+}
+
+/* ============================================
+   MOBILE LANDSCAPE (480px - 768px)
+   ============================================ */
+@media (min-width: 480px) and (max-width: 768px) {
+    .hero-stats {
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 1.5rem;
+    }
+
+    .stat {
+        min-width: 120px;
+    }
+
+    .about-highlights {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .skills-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+/* ============================================
+   TOUCH DEVICE OPTIMIZATIONS
+   ============================================ */
+@media (hover: none) and (pointer: coarse) {
+    /* Disable hover animations on touch devices */
+    .skill-category:hover,
+    .highlight-card:hover,
+    .project-card:hover,
+    .timeline-content:hover,
+    .contact-method:hover {
+        animation: none;
+    }
+
+    /* Remove 3D tilt on touch devices */
+    .skill-category,
+    .highlight-card {
+        transform: none !important;
+    }
+
+    /* Larger touch targets */
+    .social-link {
+        width: 48px;
+        height: 48px;
+    }
+
+    .btn {
+        padding: 1rem 2rem;
+        min-height: 48px;
+    }
+
+    .nav-link {
+        padding: 1rem;
+    }
+
+    .theme-btn {
+        width: 48px;
+        height: 48px;
+    }
+
+    .theme-toggle {
+        width: 60px;
+        height: 60px;
+    }
+
+    /* Remove magnetic button effect */
+    .btn-primary,
+    .nav-cta {
+        transform: none !important;
+    }
+
+    /* Disable mouse glow on touch */
+    .mouse-glow {
+        display: none;
+    }
+
+    /* Remove tooltips on touch - they interfere */
+    [data-tooltip]::after,
+    [data-tooltip]::before {
+        display: none;
+    }
+}
+
+/* ============================================
+   MOBILE ANIMATION PERFORMANCE
+   ============================================ */
+@media (max-width: 768px) {
+    /* Reduce particles on mobile */
+    .particle:nth-child(n+7) {
+        display: none;
+    }
+
+    .particle {
+        width: 6px;
+        height: 6px;
+        animation-duration: 20s;
+    }
+
+    /* Reduce blobs on mobile */
+    .blob-3 {
+        display: none;
+    }
+
+    .blob-1,
+    .blob-2 {
+        filter: blur(60px);
+        opacity: 0.3;
+    }
+
+    .blob-1 {
+        width: 250px;
+        height: 250px;
+    }
+
+    .blob-2 {
+        width: 200px;
+        height: 200px;
+    }
+
+    /* Simplify code symbols */
+    .code-symbol:nth-child(n+4) {
+        display: none;
+    }
+
+    /* Reduce shimmer animation */
+    .project-image::after {
+        animation-duration: 6s;
+    }
+
+    /* Disable parallax on mobile for smoother scrolling */
+    .hero-image,
+    .hero-content {
+        transform: none !important;
+        opacity: 1 !important;
+    }
+}
+
+/* ============================================
+   SMALL MOBILE SPECIFIC (under 480px)
+   ============================================ */
+@media (max-width: 480px) {
+    /* Theme switcher positioning */
+    .theme-switcher {
+        bottom: 1rem;
+        right: 1rem;
+    }
+
+    .theme-toggle {
+        width: 50px;
+        height: 50px;
+    }
+
+    /* Typography scaling */
+    h1 { font-size: 2rem; }
+    h2 { font-size: 1.5rem; }
+    h3 { font-size: 1.125rem; }
+
+    .hero-subtitle {
+        font-size: 1.125rem;
+    }
+
+    .hero-description {
+        font-size: 1rem;
+    }
+
+    /* Hero image smaller */
+    .image-wrapper {
+        width: 200px;
+        height: 220px;
+    }
+
+    .image-border {
+        transform: translate(10px, 10px);
+    }
+
+    .image-decoration {
+        width: 60px;
+        height: 60px;
+        top: -15px;
+        right: -15px;
+    }
+
+    /* Buttons stack */
+    .hero-cta {
+        flex-direction: column;
+        gap: 0.75rem;
+    }
+
+    .btn {
+        width: 100%;
+        justify-content: center;
+    }
+
+    /* Social links */
+    .hero-social {
+        gap: 0.75rem;
+    }
+
+    .social-link {
+        width: 40px;
+        height: 40px;
+    }
+
+    .social-link svg {
+        width: 18px;
+        height: 18px;
+    }
+
+    /* Section padding */
+    section {
+        padding: 3rem 0;
+    }
+
+    .section-header {
+        margin-bottom: 2rem;
+    }
+
+    /* About section */
+    .about-intro {
+        font-size: 1rem;
+    }
+
+    .about-highlights {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+
+    .highlight-icon {
+        width: 40px;
+        height: 40px;
+    }
+
+    .highlight-icon svg {
+        width: 20px;
+        height: 20px;
+    }
+
+    /* Code window */
+    .code-window {
+        display: none;
+    }
+
+    /* Skills */
+    .skill-category {
+        padding: 1.25rem;
+    }
+
+    .category-icon {
+        width: 48px;
+        height: 48px;
+        margin-bottom: 1rem;
+    }
+
+    .skill-tag {
+        padding: 0.25rem 0.5rem;
+        font-size: 0.75rem;
+    }
+
+    /* Timeline */
+    .timeline-content {
+        padding: 1rem;
+    }
+
+    .timeline-header {
+        flex-direction: column;
+        gap: 0.25rem;
+    }
+
+    .timeline-date {
+        order: -1;
+    }
+
+    .timeline-details li {
+        font-size: 0.875rem;
+    }
+
+    .timeline-tags {
+        gap: 0.375rem;
+    }
+
+    .timeline-tags span {
+        font-size: 0.6875rem;
+        padding: 0.125rem 0.5rem;
+    }
+
+    .career-switch-badge {
+        font-size: 0.6875rem;
+        padding: 0.25rem 0.5rem;
+    }
+
+    /* Projects */
+    .project-content {
+        padding: 1rem;
+    }
+
+    .project-content h3 {
+        font-size: 1.125rem;
+    }
+
+    .project-content p {
+        font-size: 0.875rem;
+        margin-bottom: 1rem;
+    }
+
+    .project-image img {
+        height: 180px;
+    }
+
+    .project-links {
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+
+    .project-btn {
+        justify-content: center;
+    }
+
+    /* Contact */
+    .contact-description {
+        font-size: 1rem;
+    }
+
+    .contact-method {
+        padding: 0.75rem;
+    }
+
+    .method-icon {
+        width: 40px;
+        height: 40px;
+    }
+
+    .method-icon svg {
+        width: 20px;
+        height: 20px;
+    }
+
+    .method-label {
+        font-size: 0.6875rem;
+    }
+
+    .method-value {
+        font-size: 0.875rem;
+    }
+
+    .contact-form-wrapper {
+        padding: 1.25rem;
+    }
+
+    .form-group input,
+    .form-group textarea {
+        padding: 0.875rem;
+        font-size: 1rem;
+    }
+
+    /* Footer */
+    .footer {
+        padding: 2rem 0 1.5rem;
+    }
+
+    .footer-content {
+        gap: 1.5rem;
+    }
+
+    .footer-logo {
+        font-size: 1.25rem;
+    }
+
+    .footer-brand p {
+        font-size: 0.875rem;
+    }
+
+    .footer-nav {
+        gap: 0.75rem;
+    }
+
+    .footer-nav a {
+        font-size: 0.875rem;
+    }
+
+    .footer-social {
+        gap: 0.75rem;
+    }
+
+    .footer-social a {
+        width: 36px;
+        height: 36px;
+    }
+
+    .footer-social a svg {
+        width: 16px;
+        height: 16px;
+    }
+
+    .footer-bottom {
+        padding-top: 1.5rem;
+    }
+
+    .footer-bottom p {
+        font-size: 0.75rem;
+    }
+}
+
+/* ============================================
+   VERY SMALL MOBILE (under 360px)
+   ============================================ */
+@media (max-width: 360px) {
+    .container {
+        padding: 0 1rem;
+    }
+
+    h1 { font-size: 1.75rem; }
+    h2 { font-size: 1.375rem; }
+
+    .hero-badge {
+        font-size: 0.75rem;
+        padding: 0.375rem 0.75rem;
+    }
+
+    .image-wrapper {
+        width: 180px;
+        height: 200px;
+    }
+
+    .stat-number {
+        font-size: 1.25rem;
+    }
+
+    .stat-label {
+        font-size: 0.625rem;
+    }
+
+    .hero-stats {
+        padding: 0.75rem;
+        gap: 0.75rem;
+    }
+}
+
+/* ============================================
+   MOBILE NAVIGATION IMPROVEMENTS
+   ============================================ */
+
+/* Hide mobile resume link on desktop */
+.nav-menu-cta {
+    display: none;
+}
+
+@media (max-width: 768px) {
+    .nav-menu {
+        max-height: calc(100vh - var(--nav-height));
+        overflow-y: auto;
+        -webkit-overflow-scrolling: touch;
+    }
+
+    .nav-menu.active {
+        box-shadow: var(--shadow-lg);
+    }
+
+    .nav-link {
+        font-size: 1.125rem;
+        padding: 1rem 0;
+        border-bottom: 1px solid var(--border-color);
+    }
+
+    .nav-link:last-child {
+        border-bottom: none;
+    }
+
+    /* Show Resume link in mobile menu */
+    .nav-menu-cta {
+        display: block;
+        margin-top: 1rem;
+        padding-top: 1rem;
+        border-top: 1px solid var(--border-color);
+    }
+
+    .nav-link-cta {
+        display: inline-block;
+        background: var(--accent-primary);
+        color: white !important;
+        padding: 0.75rem 1.5rem !important;
+        border-radius: var(--radius-full);
+        font-weight: 600;
+        text-align: center;
+        width: 100%;
+        border-bottom: none !important;
+    }
+
+    .nav-link-cta:hover {
+        background: var(--accent-hover);
+    }
+
+    .nav-link-cta::after {
+        display: none;
+    }
+
+    /* Hamburger menu animation */
+    .nav-toggle.active span:nth-child(1) {
+        transform: rotate(45deg) translate(5px, 5px);
+    }
+
+    .nav-toggle.active span:nth-child(2) {
+        opacity: 0;
+    }
+
+    .nav-toggle.active span:nth-child(3) {
+        transform: rotate(-45deg) translate(7px, -6px);
+    }
+
+    .nav-toggle span {
+        transition: all 0.3s ease;
+    }
+}
+
+/* ============================================
+   SAFE AREA INSETS (for notched devices)
+   ============================================ */
+@supports (padding: max(0px)) {
+    .navbar {
+        padding-left: max(1.5rem, env(safe-area-inset-left));
+        padding-right: max(1.5rem, env(safe-area-inset-right));
+    }
+
+    .footer {
+        padding-bottom: max(2rem, env(safe-area-inset-bottom));
+    }
+
+    .theme-switcher {
+        bottom: max(1rem, env(safe-area-inset-bottom));
+        right: max(1rem, env(safe-area-inset-right));
+    }
+}
+
+/* ============================================
+   PRINT STYLES
+   ============================================ */
+@media print {
+    .theme-switcher,
+    .scroll-progress,
+    .mouse-glow,
+    .particles-container,
+    .code-symbols,
+    .blob,
+    .scroll-indicator {
+        display: none !important;
+    }
+
+    .navbar {
+        position: static;
+    }
+
+    section {
+        page-break-inside: avoid;
+    }
+}

@@ -3,7 +3,22 @@
    Smooth interactions and animations
    ============================================ */
 
+// Detect touch device
+const isTouchDevice = () => {
+    return (('ontouchstart' in window) ||
+        (navigator.maxTouchPoints > 0) ||
+        (navigator.msMaxTouchPoints > 0));
+};
+
+// Detect mobile viewport
+const isMobileViewport = () => window.innerWidth <= 768;
+
 document.addEventListener('DOMContentLoaded', () => {
+    // Add touch device class to body for CSS targeting
+    if (isTouchDevice()) {
+        document.body.classList.add('touch-device');
+    }
+
     // Initialize all features
     initThemeSwitcher();
     initNavigation();
@@ -12,13 +27,21 @@ document.addEventListener('DOMContentLoaded', () => {
     initContactForm();
     setCurrentYear();
 
-    // Initialize new interactive features
-    initMouseGlow();
+    // Initialize new interactive features (conditionally on non-touch devices)
+    if (!isTouchDevice()) {
+        initMouseGlow();
+        initCardTilt();
+    }
+
     initScrollProgress();
     initRippleEffect();
-    initTooltips();
+
+    // Only init tooltips on non-touch devices
+    if (!isTouchDevice()) {
+        initTooltips();
+    }
+
     initParticleInteraction();
-    initCardTilt();
 });
 
 /* ============================================
@@ -140,11 +163,20 @@ function initNavigation() {
         });
     }
 
-    // Smooth scroll to sections
+    // Smooth scroll to sections (only for anchor links)
     navLinks.forEach(link => {
         link.addEventListener('click', (e) => {
-            e.preventDefault();
             const targetId = link.getAttribute('href');
+
+            // Only handle anchor links (starting with #), let external links work normally
+            if (!targetId.startsWith('#')) {
+                // Close mobile menu for external links
+                navMenu.classList.remove('active');
+                navToggle?.classList.remove('active');
+                return; // Let the browser handle the navigation
+            }
+
+            e.preventDefault();
             const targetSection = document.querySelector(targetId);
 
             if (targetSection) {
@@ -380,11 +412,14 @@ window.addEventListener('load', () => {
 });
 
 /* ============================================
-   UTILITY: Parallax effect for hero
+   UTILITY: Parallax effect for hero (disabled on mobile/touch)
    ============================================ */
 const hero = document.querySelector('.hero');
-if (hero) {
+if (hero && !isTouchDevice() && !isMobileViewport()) {
     window.addEventListener('scroll', () => {
+        // Skip parallax on mobile viewport
+        if (isMobileViewport()) return;
+
         const scrolled = window.scrollY;
         const heroImage = hero.querySelector('.hero-image');
         const heroContent = hero.querySelector('.hero-content');
@@ -571,30 +606,32 @@ function initCardTilt() {
 }
 
 /* ============================================
-   MAGNETIC BUTTONS
+   MAGNETIC BUTTONS (disabled on touch devices)
    ============================================ */
-const magneticBtns = document.querySelectorAll('.btn-primary, .nav-cta');
-magneticBtns.forEach(btn => {
-    btn.addEventListener('mousemove', (e) => {
-        const rect = btn.getBoundingClientRect();
-        const x = e.clientX - rect.left - rect.width / 2;
-        const y = e.clientY - rect.top - rect.height / 2;
+if (!isTouchDevice()) {
+    const magneticBtns = document.querySelectorAll('.btn-primary, .nav-cta');
+    magneticBtns.forEach(btn => {
+        btn.addEventListener('mousemove', (e) => {
+            const rect = btn.getBoundingClientRect();
+            const x = e.clientX - rect.left - rect.width / 2;
+            const y = e.clientY - rect.top - rect.height / 2;
 
-        btn.style.transform = `translate(${x * 0.3}px, ${y * 0.3}px)`;
-    });
+            btn.style.transform = `translate(${x * 0.3}px, ${y * 0.3}px)`;
+        });
 
-    btn.addEventListener('mouseleave', () => {
-        btn.style.transform = 'translate(0, 0)';
+        btn.addEventListener('mouseleave', () => {
+            btn.style.transform = 'translate(0, 0)';
+        });
     });
-});
+}
 
 /* Text scramble effect removed for better UX */
 
 /* ============================================
-   UTILITY: Typing effect for hero subtitle
+   UTILITY: Typing effect for hero subtitle (skip on mobile for performance)
    ============================================ */
 const heroSubtitle = document.querySelector('.hero-subtitle');
-if (heroSubtitle) {
+if (heroSubtitle && !isMobileViewport()) {
     const text = heroSubtitle.textContent;
     heroSubtitle.textContent = '';
     heroSubtitle.style.borderRight = '2px solid var(--accent-primary)';
