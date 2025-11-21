@@ -280,9 +280,13 @@
                 font-size: 9pt;
             }
 
-            .contact-info span {
+            .contact-info span:not(.separator) {
                 display: block;
                 margin: 3px 0;
+            }
+
+            .contact-info .separator {
+                display: none;
             }
 
             .job-header {
@@ -366,9 +370,9 @@
         <h1 class="name">AKSHYA PANDEY</h1>
         <div class="title">Senior Software Engineer | Java | Spring Boot | Microservices | AI/ML Integration</div>
         <div class="contact-info">
-            <span>+91 7814001316</span> |
-            <span>akshyapandey20@gmail.com</span> |
-            <span>linkedin.com/in/akshya-pandey-b8b5a115b</span> |
+            <span>+91 7814001316</span><span class="separator"> | </span>
+            <span>akshyapandey20@gmail.com</span><span class="separator"> | </span>
+            <span>linkedin.com/in/akshya-pandey-b8b5a115b</span><span class="separator"> | </span>
             <span>Gurugram, India</span>
         </div>
     </header>
